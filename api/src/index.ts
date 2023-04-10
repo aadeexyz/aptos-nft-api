@@ -1,1 +1,3 @@
-console.log("Hello World!")
+import * as dotenv from 'dotenv';
+dotenv.config();
+

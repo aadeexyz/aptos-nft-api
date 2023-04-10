@@ -219,6 +219,10 @@ module nft_api::just_nfts {
         let collection_name = collection_data.collection_name;
         let token_name = collection_data.base_token_name;
         let token_property_version = 0;
+        let resource_signer_cap = &collection_data.resource_signer_cap;
+        let resource_signer = account::create_signer_with_capability(resource_signer_cap);
+        let resource_addr = signer::address_of(&resource_signer);
+        
 
         string::append(
             &mut token_name,
@@ -226,7 +230,7 @@ module nft_api::just_nfts {
         );
 
         let token_id = token::create_token_id_raw(
-            @nft_api,
+            resource_addr,
             collection_name,
             token_name,
             token_property_version
@@ -236,7 +240,7 @@ module nft_api::just_nfts {
         );
 
         token::get_tokendata_uri(
-            @nft_api,
+            resource_addr,
             tokendata_id
         )
     }
@@ -307,5 +311,23 @@ module nft_api::just_nfts {
 
         mint(&minter);
         burn(&minter, 0);
+    }
+
+    #[test(deployer = @nft_api, minter = @0x3)]
+    fun get_token_uri(
+        deployer: signer,
+        minter: signer
+    ) acquires CollectionData {
+        setup(
+            &deployer,
+            &minter
+        );
+
+        mint(&minter);
+        let uri = get_uri(0);
+        assert!(
+            uri == string::utf8(b"ipfs://QmY63wEzRuLseMptaNWo6hQuTaSSFJxGE5ft86BSU55cen/0.json"),
+            1
+        );
     }
 }
