@@ -1,0 +1,20 @@
+{
+    "name": "Just NFT #8",
+    "description": "This is just a NFT",
+    "image": "ipfs://QmNanwP5N14mU16C7emk6AipZwF8jojc7JMxXFVih5yMwJ/8.png",
+    "external_url": "https://github.com/AadeeWasTaken",
+    "attributes": [
+        {
+            "trait_type": "Red",
+            "value": 184
+        },
+        {
+            "trait_type": "Green",
+            "value": 133
+        },
+        {
+            "trait_type": "Blue",
+            "value": 248
+        }
+    ]
+}
