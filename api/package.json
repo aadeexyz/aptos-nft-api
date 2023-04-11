@@ -4,9 +4,6 @@
     "description": "",
     "main": "out/index.js",
     "type": "module",
-    "scripts": {
-        "serve": "node src/server.js"
-    },
     "keywords": [],
     "author": "",
     "license": "MIT",

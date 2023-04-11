@@ -8,7 +8,6 @@ module nft_api::just_nfts {
 
     use nft_api::utils;
 
-
     ////////////////////
     // Constants
     ////////////////////

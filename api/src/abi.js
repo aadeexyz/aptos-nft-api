@@ -1,3 +1,4 @@
+/// ABI for the smart contract
 export const ABI = [
     // mint
     "01046d696e7442059101c56319f1d804610f35c71cb27b71d7b30e45613fb3e938507372366c096a7573745f6e667473000000",
