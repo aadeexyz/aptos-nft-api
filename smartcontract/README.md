@@ -20,7 +20,7 @@ This repository houses the smart contract for Just NFTs written in Move.
 This contract lets users **mint NFTs**, **tranfer NFTs**, and **burn NFTs**. It also has several utility functions that allow users to **register a Token Store** and **opt-in to transfers**.
 
 ## Files 📁
-- `just_nft.move` - The main contract file
+- `just_nfts.move` - The main contract file
 - `utils.move` - Utility functions
 - `mint.move` - Minting Scipt to mint NFTs
 
