@@ -8,11 +8,29 @@ module nft_api::just_nfts {
 
     use nft_api::utils;
 
-    const SEED: vector<u8> = vector<u8>[6, 9, 4, 2, 0];
-    const BURNABLE_BY_OWNER: vector<u8> = b"TOKEN_BURNABLE_BY_OWNER";
 
+    ////////////////////
+    // Constants
+    ////////////////////
+
+    const BURNABLE_BY_OWNER: vector<u8> = b"TOKEN_BURNABLE_BY_OWNER";
+    
+    /// Seed used to create the resource account
+    const SEED: vector<u8> = vector<u8>[6, 9, 4, 2, 0];
+
+    ////////////////////
+    // Error Constants
+    ////////////////////
+     
+    /// Token ID is less than 0 or greater than 9
     const EINVALID_TOKEN_ID: u64 = 0;
 
+    ////////////////////
+    // Resource Structs
+    ////////////////////
+    
+    /// @dev This struct stores the collection data and the resource signer capability
+    /// @custom:ability Can be stored in the global storage
     struct CollectionData has key {
         collection_name: String,
         base_token_name: String,
@@ -22,6 +40,13 @@ module nft_api::just_nfts {
         resource_signer_cap: SignerCapability
     }
 
+    ////////////////////
+    // Functions
+    ////////////////////
+    
+    /// @dev This function is called when the module is published
+    /// @dev It creates the resource account and the collection
+    /// @param The account that is publishing the module
     fun init_module(
         account: &signer
     ) {
@@ -65,6 +90,8 @@ module nft_api::just_nfts {
         );
     }
 
+    /// @dev Mint a new token to the caller account
+    /// @param The account that is calling the function
     public entry fun mint(
         caller: &signer
     ) acquires CollectionData {
@@ -121,6 +148,9 @@ module nft_api::just_nfts {
         *minted = *minted + 1;
     }
 
+    /// @dev Transfer a token to another account
+    /// @param The account that is calling the function
+    /// @param The address of the recipient
     public entry fun transfer(
         owner: &signer,
         recipient: address,
@@ -156,6 +186,8 @@ module nft_api::just_nfts {
         );
     }
 
+    /// @dev Burn a token
+    /// @param The account that is calling the function
     public entry fun burn(
         owner: &signer,
         token_id: u128
@@ -189,7 +221,9 @@ module nft_api::just_nfts {
         );
     }
 
-        public entry fun opt_into_transfer(
+    /// @dev Opt into direct transfer
+    /// @param The account that is calling the function
+    public entry fun opt_into_transfer(
         account: &signer
     ) {
         token::opt_in_direct_transfer(
@@ -198,6 +232,8 @@ module nft_api::just_nfts {
         );
     }
 
+    /// @dev Register the token store
+    /// @param The account that is calling the function
     public entry fun register_token_store(
         account: &signer
     ) {
@@ -205,6 +241,12 @@ module nft_api::just_nfts {
             account,
         );
     }
+
+    ////////////////////
+    // TESTS
+    ////////////////////
+    
+    /// @dev The tests aren't extensive, but they do test the basic functionality
 
     #[test_only]
     fun setup(

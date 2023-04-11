@@ -2,6 +2,9 @@ module nft_api::utils {
     use std::string::{Self, String};
     use std::vector;
 
+    /// @dev Converts a `u128` to its `string` representation
+    /// @param value The `u128` to convert
+    /// @return The `string` representation of the `u128`
     public fun to_string(value: u128): String {
         if (value == 0) {
             return string::utf8(b"0")
