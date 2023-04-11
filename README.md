@@ -4,7 +4,7 @@
 [![GitHub](https://custom-icon-badges.demolab.com/badge/-Follow-orange?style=for-the-badge&logoColor=white&logo=github)](https://github.com/AadeeWasTaken)
 
 ## What is this? 🤔
-This a simple REST API that allows you to interact with the Just NFTs smart contract on the Aptos testnet.
+This is a simple REST API that allows you to interact with the Just NFTs smart contract on the Aptos testnet.
 
 ## Documentation 📚
 | Directory | Description |
