@@ -14,7 +14,7 @@ This repository houses the rest api for Just NFTs.
   - [Burn](#burn-)
   - [Opt Into Transfer](#opt-into-transfer-)
   - [Register Token Store](#register-token-store-)
-- [Running the API](#running-the-api-🏃)
+- [Running the API](#running-the-api-)
 
 ## Overview 👀
 This is a simple rest api that uses the [Aptos SDK](https://aptos.dev/sdks/ts-sdk/index) and [Express](https://expressjs.com/) to interact with the Just NFTs smart contract.
