@@ -3,18 +3,18 @@
 This repository houses the smart contract for Just NFTs written in Move.
 
 ## Table of Contents 📚
-- [Overview](#overview-)
-- [Files](#files-)
-- [Getting Started](#getting-started-)
-- [Usage](#usage-)
-  - [Mint](#mint-)
-  - [Transfer](#transfer-)
-  - [Burn](#burn-)
-  - [Opt Into Transfer](#opt-into-transfer-)
-  - [Register Token Store](#register-token-store-)
-- [Building](#building-)
-- [Testing](#testing-)
-- [Deploying](#deploying-)
+- [Overview](#overview-👀)
+- [Files](#files-📁)
+- [Getting Started](#getting-started-🚀)
+- [Usage](#usage-⚙️)
+  - [Mint](#mint-🎨)
+  - [Transfer](#transfer-📤)
+  - [Burn](#burn-🔥)
+  - [Opt Into Transfer](#opt-into-transfer-📥)
+  - [Register Token Store](#register-token-store-📦)
+- [Building](#building-🏗️)
+- [Testing](#testing-🧪)
+- [Deploying](#deploying-🚀)
 
 ## Overview 👀
 This contract lets users **mint NFTs**, **tranfer NFTs**, and **burn NFTs**. It also has several utility functions that allow users to **register a Token Store** and **opt-in to transfers**.
