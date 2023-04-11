@@ -38,7 +38,7 @@ Before calling any endpoints make sure you send **POST** requests to `/optin/<PR
 
 ## Usage ⚙️
 
-### Get NFT Data 🖼️
+### Get NFT Data 📥
 > **GET** request to `/token/<TOKEN ID>`
 
 The `/token/<TOKEN ID>` endpoint can be called to get the data of an NFT.
