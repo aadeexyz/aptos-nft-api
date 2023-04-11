@@ -156,23 +156,6 @@ module nft_api::just_nfts {
         );
     }
 
-    public entry fun opt_into_transfer(
-        account: &signer
-    ) {
-        token::opt_in_direct_transfer(
-            account,
-            true
-        );
-    }
-
-    public entry fun register_token_store(
-        account: &signer
-    ) {
-        token::initialize_token_store(
-            account,
-        );
-    }
-
     public entry fun burn(
         owner: &signer,
         token_id: u128
@@ -206,43 +189,21 @@ module nft_api::just_nfts {
         );
     }
 
-    #[view]
-    public fun get_uri(
-        token_id: u128
-    ): String acquires CollectionData {
-        assert!(
-            token_id >= 0 && token_id < 10,
-            error::out_of_range(EINVALID_TOKEN_ID)
+        public entry fun opt_into_transfer(
+        account: &signer
+    ) {
+        token::opt_in_direct_transfer(
+            account,
+            true
         );
+    }
 
-        let collection_data = borrow_global_mut<CollectionData>(@nft_api);
-        let collection_name = collection_data.collection_name;
-        let token_name = collection_data.base_token_name;
-        let token_property_version = 0;
-        let resource_signer_cap = &collection_data.resource_signer_cap;
-        let resource_signer = account::create_signer_with_capability(resource_signer_cap);
-        let resource_addr = signer::address_of(&resource_signer);
-        
-
-        string::append(
-            &mut token_name,
-            utils::to_string(token_id)
+    public entry fun register_token_store(
+        account: &signer
+    ) {
+        token::initialize_token_store(
+            account,
         );
-
-        let token_id = token::create_token_id_raw(
-            resource_addr,
-            collection_name,
-            token_name,
-            token_property_version
-        );
-        let tokendata_id = token::get_tokendata_id(
-            token_id
-        );
-
-        token::get_tokendata_uri(
-            resource_addr,
-            tokendata_id
-        )
     }
 
     #[test_only]
@@ -311,23 +272,5 @@ module nft_api::just_nfts {
 
         mint(&minter);
         burn(&minter, 0);
-    }
-
-    #[test(deployer = @nft_api, minter = @0x3)]
-    fun get_token_uri(
-        deployer: signer,
-        minter: signer
-    ) acquires CollectionData {
-        setup(
-            &deployer,
-            &minter
-        );
-
-        mint(&minter);
-        let uri = get_uri(0);
-        assert!(
-            uri == string::utf8(b"ipfs://QmY63wEzRuLseMptaNWo6hQuTaSSFJxGE5ft86BSU55cen/0.json"),
-            1
-        );
     }
 }
